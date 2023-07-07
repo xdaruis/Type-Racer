@@ -64,9 +64,9 @@ function type(e) {
     if (key.length === 1 && key != " ") {
         document.getElementById("text").innerHTML += key;
         writtenWord += key;
-        if (startInterval === null) {
-            start = Date.now();
-            startInterval = setInterval(startTimer, ONE_THOUSAND);
+        if (startGame === null) {
+            startTime = Date.now();
+            startGame = setInterval(countDown, ONE_THOUSAND);
         }
     } else if (key === "Backspace") {
         writtenWord = writtenWord.replace(/.$/g, '');
@@ -99,11 +99,11 @@ function checkWord(key) {
     document.getElementById(actWordId + " " + (writtenWord.length)).style.color = "black";
 }
 
-let start = null;
-let startInterval = null;
+let startTime = null;
+let startGame = null;
 
-function startTimer() {
-    let timePassed = Date.now() - start;
+function countDown() {
+    let timePassed = Date.now() - startTime;
     let seconds =  NUM_SECONDS - Math.floor(timePassed / ONE_THOUSAND);
     document.getElementById("timer").innerHTML = seconds;
     if (seconds === 0) {
@@ -112,7 +112,7 @@ function startTimer() {
 }
 
 function gameOver() {
-    clearInterval(startInterval);
+    clearInterval(startGame);
     gameState = false;
     document.getElementById("timer").innerHTML = "";
     const box = document.createElement("div");
