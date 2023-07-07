@@ -84,15 +84,14 @@ function checkWord(key) {
     if ((key === " " || key === "Enter") && textToWrite[actWordId] === writtenWord) {
         document.getElementById(actWordId).innerHTML = "";
         ++actWordId;
-        writtenWord = "";
         ++completedWords;
+        writtenWord = "";
         document.getElementById("text").innerHTML = "&nbsp;";
         addNextWord();
         return;
     }
     if (writtenWord[writtenWord.length - 1] != document.getElementById(actWordId + " " + (writtenWord.length - 1)).innerHTML) {
         document.getElementById(actWordId + " " + (writtenWord.length - 1)).style.color = "red";
-        console.log(document.getElementById(actWordId + " " + (writtenWord.length - 1)));
         ++mistakes;
     } else {
         document.getElementById(actWordId + " " + (writtenWord.length - 1)).style.color = "green";
@@ -113,12 +112,11 @@ function startTimer() {
 }
 
 function gameOver() {
-    startInterval = null
+    clearInterval(startInterval);
     gameState = false;
-    document.getElementById("timer").id = "gameOver";
-    document.getElementById("gameOver").innerHTML = "";
+    document.getElementById("timer").innerHTML = "";
     const box = document.createElement("div");
-    document.getElementById("gameOver").appendChild(box);
+    document.getElementById("timer").appendChild(box);
     const wpmDisplay = document.createElement("h1");
     wpmDisplay.className = "d-flex justify-content-center";
     wpmDisplay.innerHTML = "WPM: " + completedWords;
