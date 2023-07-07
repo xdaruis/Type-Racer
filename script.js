@@ -4,6 +4,7 @@ const ONE_THOUSAND = 1000;
 
 let lettersNum;
 let textToWrite;
+let displayWordId = 12;
 
 document.onload = generateText();
 
@@ -12,9 +13,10 @@ function generateText() {
     lettersNum = paragraph.replace(/\s/g, '').split("").length;
     textToWrite = paragraph.split(" ");
     const box = document.createElement("h5");
+    box.id = "showText"
     box.className = "row";
     document.body.appendChild(box);
-    for (let i = 0; i < textToWrite.length; ++i) {
+    for (let i = 0; i <= displayWordId; ++i) {
         const actWord = document.createElement("div");
         actWord.id = "" + i;
         actWord.className = "d-flex justify-content-center";
@@ -26,6 +28,20 @@ function generateText() {
         }
         box.appendChild(actWord);
     }
+}
+
+function addNextWord() {
+    ++displayWordId;
+    const actWord = document.createElement("div");
+    actWord.id = "" + displayWordId;
+    actWord.className = "d-flex justify-content-center";
+    for (let j = 0; j < textToWrite[displayWordId].length; ++j) {
+        const letter = document.createElement("span");
+        letter.id = "" + displayWordId + " " + j;
+        letter.innerHTML = textToWrite[displayWordId][j];
+        actWord.appendChild(letter);
+    }
+    document.getElementById("showText").appendChild(actWord);
 }
 
 document.onkeydown = type;
@@ -71,6 +87,7 @@ function checkWord(key) {
         writtenWord = "";
         ++completedWords;
         document.getElementById("text").innerHTML = "&nbsp;";
+        addNextWord();
         return;
     }
     if (writtenWord[writtenWord.length - 1] != document.getElementById(actWordId + " " + (writtenWord.length - 1)).innerHTML) {
