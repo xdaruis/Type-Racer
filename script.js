@@ -28,7 +28,7 @@ let completedWords = 0;
 let actId = 0;
 
 function type(e) {
-    if(e.key == " " && e.target == document.body) {
+    if(e.key === " " && e.target == document.body) {
         e.preventDefault();
     }
     if (!gameState) {
