@@ -94,7 +94,7 @@ function checkWord(key) {
         document.getElementById(actWordId + " " + (writtenWord.length - 1)).style.color = "red";
         console.log(document.getElementById(actWordId + " " + (writtenWord.length - 1)));
         ++mistakes;
-    } else if (writtenWord[writtenWord.length - 1] === document.getElementById(actWordId + " " + (writtenWord.length - 1)).innerHTML) {
+    } else {
         document.getElementById(actWordId + " " + (writtenWord.length - 1)).style.color = "green";
     }
     document.getElementById(actWordId + " " + (writtenWord.length)).style.color = "black";
