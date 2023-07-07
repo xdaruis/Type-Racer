@@ -65,7 +65,7 @@ function type(e) {
 }
 
 function checkWord(key) {
-    if (key === " " && textToWrite[actWordId] === writtenWord) {
+    if ((key === " " || key === "Enter") && textToWrite[actWordId] === writtenWord) {
         document.getElementById(actWordId).innerHTML = "";
         ++actWordId;
         writtenWord = "";
