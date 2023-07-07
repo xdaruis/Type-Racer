@@ -2,14 +2,14 @@ const NUM_SECONDS = 60;
 const HUNDRED = 100;
 const ONE_THOUSAND = 1000;
 
-let letters;
+let lettersNum;
 let textToWrite;
 
 document.onload = generateText();
 
 function generateText() {
     const paragraph = "Computer science is the study of computation information and automation Computer science spans theoretical disciplines such as algorithms theory of computation and information theory to applied disciplines including the design and implementation of hardware and software Though more often considered an academic discipline computer science is closely related to computer programming Algorithms and data structures are central to computer science The theory of computation concerns abstract models of computation and general classes of problems that can be solved using them The fields of cryptography and computer security involve studying the means for secure communication and for preventing security vulnerabilities Computer graphics and computational geometry address the generation of images Programming language theory considers different ways to describe computational processes and database theory concerns the management of repositories of data Human–computer interaction investigates the interfaces through";
-    letters = paragraph.replace(/\s/g, '').split("").length;
+    lettersNum = paragraph.replace(/\s/g, '').split("").length;
     textToWrite = paragraph.split(" ");
     const box = document.createElement("h5");
     box.className = "row";
@@ -106,7 +106,7 @@ function gameOver() {
     wpmDisplay.className = "d-flex justify-content-center";
     wpmDisplay.innerHTML = "WPM: " + completedWords;
     box.appendChild(wpmDisplay);
-    const accuracy = Math.floor(HUNDRED * (letters - mistakes) / letters);
+    const accuracy = Math.floor(HUNDRED * (lettersNum - mistakes) / lettersNum);
     const accuracyDisplay = document.createElement("h1");
     accuracyDisplay.className = "d-flex justify-content-center";
     accuracyDisplay.innerHTML = "Accuracy: " + accuracy + "%";
