@@ -52,7 +52,7 @@ let mistakes = 0;
 let actWordId = 0;
 
 function type(e) {
-    if(e.key === " " && e.target == document.body) {
+    if (e.key === " " && e.target == document.body) {
         e.preventDefault();
     }
     if (!gameState) {
