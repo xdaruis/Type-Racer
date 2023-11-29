@@ -104,7 +104,7 @@ function countDown() {
     let timePassed = Date.now() - startTime;
     let seconds =  NUM_SECONDS - Math.floor(timePassed / ONE_THOUSAND);
     document.getElementById("timer").innerHTML = seconds;
-    if (seconds === 0) {
+    if (seconds <= 0) {
         gameOver();
     }
 }
